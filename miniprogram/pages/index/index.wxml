@@ -1,0 +1,82 @@
+<view class="container">
+  <view class="card hero-card">
+    <text class="hero-title">山西正仁司法鉴定中心</text>
+    <text class="hero-slogan">科学 · 公正 · 高效 · 保密</text>
+    <view class="hero-tags">
+      <view class="tag" wx:for="{{coreValues}}" wx:key="value">{{item}}</view>
+    </view>
+    <text class="hero-desc">经山西省司法厅核准注册的综合性司法鉴定机构，为公检法机关、行政单位及社会公众提供权威、规范的司法鉴定服务。</text>
+  </view>
+
+  <view class="card stats-card">
+    <view class="stat" wx:for="{{stats}}" wx:key="title">
+      <text class="stat-title">{{item.title}}</text>
+      <text class="stat-value">{{item.value}}</text>
+    </view>
+  </view>
+
+  <view class="card section">
+    <text class="section-title">核心业务范围</text>
+    <view class="service-group" wx:for="{{services}}" wx:key="title">
+      <text class="group-title">{{item.title}}</text>
+      <view class="group-items">
+        <view class="group-item" wx:for="{{item.items}}" wx:key="index">{{item}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card section">
+    <text class="section-title">委托鉴定流程</text>
+    <view class="process-step" wx:for="{{processSteps}}" wx:key="index">
+      <view class="step-index">0{{index + 1}}</view>
+      <view class="step-content">
+        <text class="step-title">{{item.title}}</text>
+        <text class="step-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card section">
+    <text class="section-title">中心优势</text>
+    <view class="advantage" wx:for="{{advantages}}" wx:key="index">
+      <text class="advantage-index">0{{index + 1}}</text>
+      <text class="advantage-text">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="card section">
+    <text class="section-title">联系方式</text>
+    <view class="contact-row">
+      <text class="contact-label">咨询电话</text>
+      <view class="phones">
+        <view
+          class="action-chip action-primary"
+          wx:for="{{contact.phones}}"
+          wx:key="{{item}}"
+          data-phone="{{item}}"
+          bindtap="handleCall"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <view class="contact-row">
+      <text class="contact-label">办公地址</text>
+      <text class="contact-value">{{contact.address}}</text>
+      <view class="action-chip action-secondary" bindtap="handleCopyAddress">复制地址</view>
+    </view>
+    <view class="contact-row">
+      <text class="contact-label">办公时间</text>
+      <text class="contact-value">{{contact.hours}}</text>
+    </view>
+    <view class="contact-row">
+      <text class="contact-label">官网</text>
+      <text class="contact-value">{{contact.website}}</text>
+      <view class="action-chip action-secondary" bindtap="handleCopyWebsite">复制链接</view>
+    </view>
+  </view>
+
+  <view class="footer">
+    <cloudbase-badge show-text="{{true}}" />
+  </view>
+</view>
