@@ -1,0 +1,133 @@
+<scroll-view class="page-section" scroll-y>
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">立即联系</text>
+      <text class="section-subtitle">提供电话、邮箱、地址等多种方式</text>
+    </view>
+    <view class="contact-block">
+      <text class="contact-label">咨询电话</text>
+      <view class="chip-group">
+        <view
+          class="action-chip action-primary"
+          wx:for="{{contactInfo.phones}}"
+          wx:key="{{item}}"
+          data-phone="{{item}}"
+          bindtap="onCall"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+    <view class="contact-block">
+      <text class="contact-label">办公时间</text>
+      <text class="contact-value">{{contactInfo.hours}}</text>
+    </view>
+    <view class="contact-block">
+      <text class="contact-label">电子邮箱</text>
+      <text class="contact-value">{{contactInfo.email}}</text>
+    </view>
+    <view class="contact-block">
+      <text class="contact-label">办公地址</text>
+      <text class="contact-value">{{contactInfo.address}}</text>
+      <view class="action-chip action-secondary" bindtap="onCopyAddress">复制地址</view>
+    </view>
+    <view class="map-wrapper">
+      <map
+        class="contact-map"
+        latitude="{{location.latitude}}"
+        longitude="{{location.longitude}}"
+        scale="17"
+        markers="{{markers}}"
+        enable-3D="true"
+        show-location
+      />
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">交通指引</text>
+    </view>
+    <view class="facility-list" wx:for="{{transport}}" wx:key="index">
+      <view class="facility-bullet"></view>
+      <text class="facility-text">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">在线预约</text>
+      <text class="section-subtitle">填写信息后，我们将在1个工作日内联系您</text>
+    </view>
+    <view class="form-group">
+      <text class="form-label">联系人姓名 *</text>
+      <input
+        class="form-input"
+        placeholder="请输入姓名"
+        data-field="name"
+        value="{{formData.name}}"
+        bindinput="onInputChange"
+      />
+    </view>
+    <view class="form-group">
+      <text class="form-label">联系电话 *</text>
+      <input
+        class="form-input"
+        type="number"
+        maxlength="11"
+        placeholder="请输入手机号码"
+        data-field="phone"
+        value="{{formData.phone}}"
+        bindinput="onInputChange"
+      />
+    </view>
+    <view class="form-group">
+      <picker
+        mode="selector"
+        range="{{serviceTypes}}"
+        bindchange="onSelectType"
+      >
+        <view class="picker">
+          <text class="form-label">鉴定类型 *</text>
+          <text class="picker-value">{{formData.type || '请选择鉴定类型'}}</text>
+        </view>
+      </picker>
+    </view>
+    <view class="form-group">
+      <text class="form-label">补充说明</text>
+      <textarea
+        class="form-textarea"
+        placeholder="请描述您的鉴定需求、案件简况或方便联系的时间"
+        data-field="message"
+        value="{{formData.message}}"
+        bindinput="onInputChange"
+        maxlength="300"
+        auto-height
+      />
+    </view>
+    <view class="submit-bar">
+      <view class="button button-primary" bindtap="onSubmit">提交预约</view>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{lastResult}}">
+    <view class="card-header">
+      <text class="section-title">预约已登记</text>
+      <text class="section-subtitle">凭预约编号可在“我的预约”中查看进度</text>
+    </view>
+    <view class="contact-block">
+      <text class="contact-label">预约编号</text>
+      <text class="contact-value">{{lastResult.id}}</text>
+    </view>
+    <view class="contact-block">
+      <text class="contact-label">鉴定类型</text>
+      <text class="contact-value">{{lastResult.type}}</text>
+    </view>
+    <view class="submit-bar submit-bar--double">
+      <view class="button button-outline" bindtap="onResetForm">继续提交</view>
+      <view class="button button-primary" bindtap="onQuickView">查看我的预约</view>
+    </view>
+  </view>
+
+  <view class="footer">请确保联系方式真实有效，我们将对您的信息严格保密。</view>
+</scroll-view>

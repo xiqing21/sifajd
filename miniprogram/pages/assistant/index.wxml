@@ -1,0 +1,64 @@
+<view class="assistant-page">
+  <scroll-view
+    class="chat-area"
+    scroll-y
+    enable-flex="true"
+    scroll-with-animation
+    scroll-top="{{scrollTop}}"
+  >
+    <block wx:for="{{messages}}" wx:key="{{index}}">
+      <view class="chat-item {{item.role}}">
+        <view class="avatar" wx:if="{{item.role === 'assistant'}}">
+          <text>AI</text>
+        </view>
+        <view class="chat-bubble">
+          <text>{{item.content}}</text>
+        </view>
+        <view class="avatar avatar-user" wx:if="{{item.role === 'user'}}">
+          <text>我</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class="shortcut-panel">
+    <scroll-view scroll-x class="shortcut-scroll" enable-flex>
+      <view
+        class="shortcut-chip"
+        wx:for="{{suggestions}}"
+        wx:key="{{index}}"
+        data-value="{{item}}"
+        bindtap="onSuggestionTap"
+      >
+        {{item}}
+      </view>
+    </scroll-view>
+    <view class="shortcut-actions">
+      <view class="quick-link" data-url="/pages/progress/index" bindtap="onNavigate">
+        <text>鉴定进度查询</text>
+      </view>
+      <view class="quick-link" data-url="/pages/contact/index" data-tab="true" bindtap="onNavigate">
+        <text>预约联系</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="input-panel">
+    <textarea
+      class="chat-input"
+      placeholder="请描述您的问题或需求"
+      auto-height
+      value="{{inputValue}}"
+      bindinput="onInputChange"
+      cursor-spacing="20"
+      maxlength="200"
+    />
+    <button
+      class="send-button"
+      loading="{{sending}}"
+      disabled="{{sending}}"
+      type="primary"
+      bindtap="sendMessage"
+    >发送</button>
+  </view>
+</view>

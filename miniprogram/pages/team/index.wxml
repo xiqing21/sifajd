@@ -1,0 +1,56 @@
+<scroll-view class="page-section" scroll-y>
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">机构资质</text>
+      <text class="section-subtitle">依法登记备案，执业范围覆盖六大鉴定类别</text>
+    </view>
+    <image class="team-hero" src="/images/team-hero.jpg" mode="aspectFill" />
+    <view class="credentials" wx:for="{{credentials}}" wx:key="title">
+      <view class="credential-title">{{item.title}}</view>
+      <view class="credential-content">
+        <text class="credential-text">证件编号：{{item.number}}</text>
+        <text class="credential-text" wx:if="{{item.valid}}">有效期：{{item.valid}}</text>
+        <text class="credential-text">核准单位：{{item.issuedBy}}</text>
+        <text class="credential-text" wx:if="{{item.scope}}">业务范围：{{item.scope}}</text>
+      </view>
+      <view class="divider"></view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">实验室与设备</text>
+    </view>
+    <view class="facility-list" wx:for="{{facilities}}" wx:key="index">
+      <view class="facility-bullet"></view>
+      <text class="facility-text">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">专家团队</text>
+      <text class="section-subtitle">多学科背景的司法鉴定人提供专业保障</text>
+    </view>
+    <view class="team-list" wx:for="{{teamMembers}}" wx:key="name">
+      <view class="team-card">
+        <text class="team-name">{{item.name}}</text>
+        <text class="team-title">{{item.title}}</text>
+        <view class="team-tag">专长：{{item.expertise}}</view>
+        <text class="team-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">质量承诺</text>
+    </view>
+    <view class="promise-list" wx:for="{{promise}}" wx:key="index">
+      <view class="promise-index">0{{index + 1}}</view>
+      <text class="promise-text">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="footer">专业、独立、科学，守护每一份司法鉴定意见的公信力。</view>
+</scroll-view>

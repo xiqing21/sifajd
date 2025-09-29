@@ -1,0 +1,44 @@
+<scroll-view class="page-section" scroll-y>
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">标准委托流程</text>
+      <text class="section-subtitle">自咨询到报告交付的全流程节点</text>
+    </view>
+    <view class="list">
+      <view class="list-item" wx:for="{{workflow}}" wx:key="title">
+        <view class="list-index">0{{index + 1}}</view>
+        <view class="list-content">
+          <text class="list-title">{{item.title}}</text>
+          <text class="list-text">{{item.detail}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">常用资料清单</text>
+    </view>
+    <view class="materials" wx:for="{{materials}}" wx:key="name">
+      <view class="material-title">{{item.name}}</view>
+      <view class="material-items">
+        <view class="material-item" wx:for="{{item.items}}" wx:key="index">{{item}}</view>
+      </view>
+      <view class="divider"></view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">常见问题</text>
+    </view>
+    <view class="faq">
+      <view class="faq-item" wx:for="{{faq}}" wx:key="question">
+        <text class="faq-question">{{item.question}}</text>
+        <text class="faq-answer">{{item.answer}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">资料需以司法行政部门备案内容为准，如有疑问请随时咨询。</view>
+</scroll-view>

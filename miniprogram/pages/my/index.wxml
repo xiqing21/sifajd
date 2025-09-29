@@ -1,0 +1,53 @@
+<scroll-view class="page-section" scroll-y refresher-enabled refresher-triggered="{{loading}}" bindrefresherrefresh="onPullDownRefresh">
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">我的预约记录</text>
+      <text class="section-subtitle">默认展示当前微信的预约记录，可输入手机号筛选</text>
+    </view>
+    <view class="form-group">
+      <text class="form-label">预约手机号</text>
+      <input
+        class="form-input"
+        type="number"
+        maxlength="11"
+        placeholder="可选：输入手机号查看家人预约"
+        value="{{phone}}"
+        bindinput="onInputChange"
+      />
+    </view>
+    <view class="submit-bar">
+      <button class="button button-primary" size="mini" loading="{{loading}}" bindtap="onSearch">刷新列表</button>
+    </view>
+  </view>
+
+  <view class="error" wx:if="{{errorMessage}}">{{errorMessage}}</view>
+
+  <block wx:if="{{appointments.length}}">
+    <view class="card" wx:for="{{appointments}}" wx:key="_id">
+      <view class="appointment-header">
+        <text class="appointment-type">{{item.type}}</text>
+        <view class="status-badge">{{item.status || '待确认'}}</view>
+      </view>
+      <view class="appointment-meta">
+        <text>预约编号：{{item._id || item.id}}</text>
+        <text>提交时间：{{item.displayCreatedAt}}</text>
+        <text>联系方式：{{item.phone}}</text>
+      </view>
+      <view class="progress-preview" wx:if="{{item.previewTimeline.length}}">
+        <view class="progress-step" wx:for="{{item.previewTimeline}}" wx:for-item="step" wx:key="title">
+          <view class="progress-dot {{step.finished ? 'progress-dot--done' : ''}}"></view>
+          <text class="progress-label">{{step.title}}</text>
+        </view>
+      </view>
+      <view class="submit-bar submit-bar--double">
+        <view class="button button-outline" bindtap="onMore" data-id="{{item._id || item.id}}">查看详情</view>
+        <view class="button button-primary" bindtap="onContact" data-phone="{{item.phone}}">联系鉴定师</view>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty" wx:if="{{!appointments.length && !loading && !errorMessage}}">
+    <image class="empty-image" src="/images/hero-1.jpg" mode="aspectFill" />
+    <text class="empty-text">还没有预约记录，前往“预约联系”发起您的首次预约</text>
+  </view>
+</scroll-view>

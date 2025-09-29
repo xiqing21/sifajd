@@ -1,0 +1,65 @@
+<scroll-view class="page-section" scroll-y>
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">输入查询信息</text>
+      <text class="section-subtitle">支持通过手机号或预约编号检索</text>
+    </view>
+    <view class="form-group">
+      <text class="form-label">预约手机号</text>
+      <input
+        class="form-input"
+        type="number"
+        maxlength="11"
+        placeholder="请输入提交预约时留的手机号"
+        data-field="queryPhone"
+        value="{{queryPhone}}"
+        bindinput="onInputChange"
+      />
+    </view>
+    <view class="form-group">
+      <text class="form-label">预约编号</text>
+      <input
+        class="form-input"
+        placeholder="可选：输入预约编号提高匹配准确度"
+        data-field="queryId"
+        value="{{queryId}}"
+        bindinput="onInputChange"
+      />
+    </view>
+    <view class="submit-bar">
+      <button class="button button-primary" loading="{{loading}}" bindtap="onSearch">查询进度</button>
+    </view>
+    <view class="tips">如忘记编号，可仅输入手机号查询最近提交的预约。</view>
+  </view>
+
+  <view class="error" wx:if="{{errorMessage}}">{{errorMessage}}</view>
+
+  <block wx:if="{{results.length}}">
+    <view class="card" wx:for="{{results}}" wx:key="_id">
+      <view class="card-header">
+        <text class="section-title">{{item.type}}</text>
+        <text class="section-subtitle">状态：{{item.status || '待确认'}}</text>
+      </view>
+      <view class="meta">
+        <text class="meta-item">预约编号：{{item._id || item.id}}</text>
+        <text class="meta-item">提交时间：{{item.displayCreatedAt}}</text>
+        <text class="meta-item">联系方式：{{item.phone}}</text>
+      </view>
+      <view class="timeline">
+        <view class="timeline-item" wx:for="{{item.timeline}}" wx:for-item="step" wx:key="title">
+          <view class="timeline-dot {{step.finished ? 'timeline-dot--done' : ''}}"></view>
+          <view class="timeline-content">
+            <text class="timeline-title">{{step.title}}</text>
+            <text class="timeline-desc">{{step.desc}}</text>
+            <text class="timeline-time" wx:if="{{step.timestampText}}">{{step.timestampText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="empty" wx:if="{{!results.length && !loading && !errorMessage}}">
+    <image class="empty-image" src="/images/hero-2.jpg" mode="aspectFill" />
+    <text class="empty-text">输入手机号或预约编号即可查询鉴定进度</text>
+  </view>
+</scroll-view>

@@ -50,7 +50,7 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
-  "libVersion": "latest",
+  "libVersion": "3.10.0",
   "projectname": "云开发空白项目",
   "isGameTourist": false,
   "condition": {
@@ -75,5 +75,5 @@
   },
   "simulatorPluginLibVersion": {},
   "editorSetting": {},
-  "appid": "wx1df2e1bbb6b569d5"
+  "appid": "wx61aee149b0bdc17f"
 }

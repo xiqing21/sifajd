@@ -1,0 +1,43 @@
+.materials {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.materials .divider:last-child {
+  display: none;
+}
+
+.material-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.material-items {
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+  margin-top: 16rpx;
+}
+
+.material-item {
+  font-size: 26rpx;
+  color: var(--color-text-light);
+  line-height: 1.6;
+  padding-left: 28rpx;
+  position: relative;
+}
+
+.material-item::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}

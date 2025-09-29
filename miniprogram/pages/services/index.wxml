@@ -1,0 +1,39 @@
+<scroll-view class="page-section" scroll-y>
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">鉴定类别</text>
+      <text class="section-subtitle">提供覆盖人身、物证、文书等多模块的司法鉴定服务</text>
+    </view>
+
+    <view class="category" wx:for="{{categories}}" wx:key="name">
+      <view class="category-header">
+        <text class="category-name">{{item.name}}</text>
+        <text class="category-desc">{{item.desc}}</text>
+      </view>
+      <view class="service-items">
+        <view class="service-item" wx:for="{{item.services}}" wx:key="index">{{item}}</view>
+      </view>
+      <view class="tips" wx:if="{{item.tips && item.tips.length}}">
+        <text class="tips-label">服务提示</text>
+        <view class="tip-item" wx:for="{{item.tips}}" wx:key="index">{{item}}</view>
+      </view>
+      <view class="divider"></view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">标准服务流程</text>
+    </view>
+    <view class="list">
+      <view class="list-item" wx:for="{{serviceFlow}}" wx:key="index">
+        <view class="list-index">0{{index + 1}}</view>
+        <view class="list-content">
+          <text class="list-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">如需了解具体需求，请联系咨询热线。</view>
+</scroll-view>

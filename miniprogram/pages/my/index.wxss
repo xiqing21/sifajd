@@ -1,0 +1,129 @@
+.form-group {
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.form-label {
+  font-size: 26rpx;
+  color: var(--color-secondary);
+  font-weight: 600;
+}
+
+.form-input {
+  padding: 20rpx 24rpx;
+  border-radius: 18rpx;
+  background: rgba(15, 76, 129, 0.08);
+  font-size: 26rpx;
+}
+
+.submit-bar {
+  margin-top: 12rpx;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.submit-bar--double {
+  width: 100%;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.submit-bar--double .button {
+  flex: 1;
+  text-align: center;
+}
+
+.error {
+  margin: 20rpx 0;
+  padding: 24rpx;
+  border-radius: 20rpx;
+  background: rgba(205, 55, 64, 0.12);
+  color: #cd3740;
+  font-size: 26rpx;
+}
+
+.appointment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.appointment-type {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.status-badge {
+  padding: 12rpx 20rpx;
+  border-radius: 18rpx;
+  background: rgba(15, 76, 129, 0.1);
+  color: var(--color-primary);
+  font-size: 24rpx;
+  font-weight: 600;
+}
+
+.appointment-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  font-size: 24rpx;
+  color: var(--color-text-light);
+  margin-bottom: 24rpx;
+}
+
+.progress-preview {
+  display: flex;
+  gap: 24rpx;
+  margin-bottom: 24rpx;
+}
+
+.progress-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  flex: 1;
+}
+
+.progress-dot {
+  width: 22rpx;
+  height: 22rpx;
+  border-radius: 50%;
+  background: rgba(15, 76, 129, 0.2);
+}
+
+.progress-dot--done {
+  background: var(--color-primary);
+}
+
+.progress-label {
+  font-size: 24rpx;
+  color: var(--color-text-light);
+  text-align: center;
+}
+
+.empty {
+  margin-top: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24rpx;
+  color: var(--color-text-light);
+}
+
+.empty-image {
+  width: 320rpx;
+  height: 200rpx;
+  border-radius: 24rpx;
+  object-fit: cover;
+  box-shadow: 0 16rpx 32rpx rgba(15, 76, 129, 0.18);
+}
+
+.empty-text {
+  font-size: 26rpx;
+  text-align: center;
+}

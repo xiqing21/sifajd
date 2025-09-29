@@ -1,0 +1,134 @@
+.credentials {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.credentials .divider:last-child {
+  display: none;
+}
+
+.credential-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.credential-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+  margin-top: 16rpx;
+}
+
+.credential-text {
+  font-size: 26rpx;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.team-hero {
+  width: 100%;
+  height: 220rpx;
+  border-radius: 24rpx;
+  object-fit: cover;
+  margin-bottom: 24rpx;
+  box-shadow: 0 16rpx 32rpx rgba(15, 76, 129, 0.12);
+}
+
+.facility-list {
+  display: flex;
+  align-items: flex-start;
+  gap: 18rpx;
+  margin-bottom: 20rpx;
+}
+
+.facility-list:last-child {
+  margin-bottom: 0;
+}
+
+.facility-bullet {
+  width: 16rpx;
+  height: 16rpx;
+  margin-top: 12rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+}
+
+.facility-text {
+  font-size: 26rpx;
+  color: var(--color-text-light);
+  line-height: 1.6;
+}
+
+.team-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.team-card {
+  background: rgba(15, 76, 129, 0.05);
+  border-radius: 24rpx;
+  padding: 26rpx 28rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+}
+
+.team-name {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.team-title {
+  font-size: 26rpx;
+  color: var(--color-primary);
+}
+
+.team-tag {
+  display: inline-flex;
+  padding: 12rpx 24rpx;
+  border-radius: 999rpx;
+  background: rgba(15, 76, 129, 0.12);
+  color: var(--color-primary);
+  font-size: 24rpx;
+}
+
+.team-desc {
+  font-size: 26rpx;
+  color: var(--color-text-light);
+  line-height: 1.7;
+}
+
+.promise-list {
+  display: flex;
+  gap: 20rpx;
+  padding: 24rpx 0;
+  border-bottom: 2rpx solid rgba(15, 76, 129, 0.1);
+}
+
+.promise-list:last-child {
+  border-bottom: none;
+}
+
+.promise-index {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 18rpx;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.promise-text {
+  flex: 1;
+  font-size: 26rpx;
+  color: var(--color-text-light);
+  line-height: 1.7;
+}

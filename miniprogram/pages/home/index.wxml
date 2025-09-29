@@ -1,0 +1,80 @@
+<scroll-view class="page-section" scroll-y>
+  <view class="card hero-swiper">
+    <swiper class="hero-swiper__container" indicator-dots autoplay circular interval="6000">
+      <swiper-item wx:for="{{banners}}" wx:key="image">
+        <image class="hero-swiper__image" src="{{item.image}}" mode="aspectFill" />
+        <view class="hero-swiper__overlay">
+          <text class="hero-swiper__badge">山西正仁司法鉴定中心</text>
+          <text class="hero-swiper__title">{{item.title}}</text>
+          <text class="hero-swiper__caption">{{item.caption}}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <view class="card quick-card">
+    <view class="card-header">
+      <text class="section-title">快捷服务</text>
+      <text class="section-subtitle">一键进入常用功能</text>
+    </view>
+    <view class="quick-grid">
+      <view
+        class="quick-item {{item.type === 'primary' ? 'quick-item--primary' : ''}}"
+        wx:for="{{quickLinks}}"
+        wx:key="text"
+        data-url="{{item.url}}"
+        data-tab="{{item.tab}}"
+        bindtap="onQuickLinkTap"
+      >
+        <text class="quick-text">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">机构亮点</text>
+    </view>
+    <view class="list">
+      <view class="list-item" wx:for="{{highlights}}" wx:key="title">
+        <view class="list-index">0{{index + 1}}</view>
+        <view class="list-content">
+          <text class="list-title">{{item.title}}</text>
+          <text class="list-text">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">主要业务速览</text>
+      <text class="section-subtitle">覆盖法医物证、临床、病理、文书与痕迹等多领域</text>
+    </view>
+    <view class="service-summary" wx:for="{{serviceSummary}}" wx:key="name">
+      <image class="service-image" src="{{item.image}}" mode="aspectFill" />
+      <view class="service-info">
+        <text class="service-title">{{item.name}}</text>
+        <view class="chip-group">
+          <view class="chip" wx:for="{{item.items}}" wx:key="index">{{item}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-header">
+      <text class="section-title">基本信息</text>
+    </view>
+    <view class="info-grid">
+      <view class="info-item" wx:for="{{stats}}" wx:key="label">
+        <text class="info-title">{{item.label}}</text>
+        <text class="info-desc">{{item.value}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="footer">
+    山西省司法厅核准 · 司法鉴定许可证证号：140118167
+  </view>
+</scroll-view>

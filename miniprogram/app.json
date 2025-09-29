@@ -1,7 +1,51 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/home/index",
+    "pages/services/index",
+    "pages/process/index",
+    "pages/team/index",
+    "pages/contact/index",
+    "pages/assistant/index",
+    "pages/progress/index",
+    "pages/my/index"
   ],
+  "tabBar": {
+    "color": "#6B7A90",
+    "selectedColor": "#0F4C81",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/services/index",
+        "text": "鉴定项目",
+        "iconPath": "images/tab-services.png",
+        "selectedIconPath": "images/tab-services-active.png"
+      },
+      {
+        "pagePath": "pages/process/index",
+        "text": "流程",
+        "iconPath": "images/tab-process.png",
+        "selectedIconPath": "images/tab-process-active.png"
+      },
+      {
+        "pagePath": "pages/team/index",
+        "text": "资质",
+        "iconPath": "images/tab-team.png",
+        "selectedIconPath": "images/tab-team-active.png"
+      },
+      {
+        "pagePath": "pages/contact/index",
+        "text": "预约",
+        "iconPath": "images/tab-contact.png",
+        "selectedIconPath": "images/tab-contact-active.png"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#0F4C81",

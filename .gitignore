@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+cloudfunctions/**/node_modules/
+
+# Build & cache
+miniprogram/.idea/
+miniprogram/.vscode/
+
+# Keys & secrets
+private.*.key
+*.pem
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# WeChat tool temp
+project.private.config.json
+miniprogram/.env*
