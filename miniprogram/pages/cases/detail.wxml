@@ -1,0 +1,57 @@
+<scroll-view class="detail-scroll" scroll-y enable-flex>
+  <view class="detail-nav">
+    <view class="detail-nav__back" bindtap="handleBack">返回</view>
+    <text class="detail-nav__title">案件详情</text>
+  </view>
+
+  <view class="detail-head">
+    <text class="detail-head__subtitle">Case Details</text>
+    <text class="detail-head__desc">实时同步实验室进度，所有信息严格保密</text>
+  </view>
+
+  <view class="detail-body">
+    <view class="card case-info-card">
+      <view class="case-info__header">
+        <text class="case-info__id">{{caseInfo.caseId}}</text>
+        <text class="case-info__status">{{caseInfo.statusLabel}}</text>
+      </view>
+      <view class="case-info__meta">
+        <view class="case-info__row">
+          <text class="case-info__label">鉴定类型</text>
+          <text class="case-info__value">{{caseInfo.type}}</text>
+        </view>
+        <view class="case-info__row">
+          <text class="case-info__label">申请人</text>
+          <text class="case-info__value">{{caseInfo.applicant}}</text>
+        </view>
+        <view class="case-info__row">
+          <text class="case-info__label">证件号</text>
+          <text class="case-info__value">{{caseInfo.idNo}}</text>
+        </view>
+        <view class="case-info__row">
+          <text class="case-info__label">提交时间</text>
+          <text class="case-info__value">{{caseInfo.submitDate}}</text>
+        </view>
+        <view class="case-info__row">
+          <text class="case-info__label">最新更新</text>
+          <text class="case-info__value">{{caseInfo.updatedAt}}</text>
+        </view>
+      </view>
+      <view class="case-info__summary">{{caseInfo.summary}}</view>
+      <view class="case-info__actions">
+        <view class="info-action" bindtap="handleCopy">复制案件号</view>
+        <view class="info-action info-action--primary" bindtap="handleCall">联系专员</view>
+      </view>
+    </view>
+
+    <view class="card timeline-card">
+      <view class="timeline-head">
+        <text class="timeline-title">进度跟踪</text>
+        <text class="timeline-subtitle">案管专员：{{caseInfo.manager}}</text>
+      </view>
+      <case-timeline steps="{{caseInfo.timeline}}" />
+    </view>
+
+    <view class="scroll-space"></view>
+  </view>
+</scroll-view>

@@ -1,0 +1,57 @@
+.header {
+  position: relative;
+  padding: calc(env(safe-area-inset-top) + 28rpx) 40rpx 40rpx;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.header__gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, #9c0b0b 0%, #c71e1e 65%, #ea6a6a 100%);
+  border-bottom-left-radius: 48rpx;
+  border-bottom-right-radius: 48rpx;
+  z-index: 0;
+}
+
+.header__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18rpx;
+}
+
+.header__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.header__subtitle {
+  font-size: 24rpx;
+  letter-spacing: 6rpx;
+  opacity: 0.8;
+}
+
+.header__title {
+  font-size: 48rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.header__description {
+  font-size: 26rpx;
+  opacity: 0.85;
+  line-height: 1.6;
+}
+
+.header__badge {
+  align-self: flex-start;
+  padding: 10rpx 24rpx;
+  border-radius: 999rpx;
+  font-size: 22rpx;
+  letter-spacing: 4rpx;
+  background: rgba(255, 255, 255, 0.18);
+  border: 2rpx solid rgba(255, 255, 255, 0.24);
+}

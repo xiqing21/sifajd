@@ -1,0 +1,17 @@
+<view class="notice-list">
+  <view
+    wx:for="{{items}}"
+    wx:key="id"
+    class="notice-item"
+    data-item="{{item}}"
+    bindtap="handleTap"
+  >
+    <view class="notice-item__meta">
+      <text class="notice-item__tag">公告</text>
+      <text class="notice-item__date">{{item.publishDate}}</text>
+    </view>
+    <view class="notice-item__title">{{item.title}}</view>
+    <view wx:if="{{item.content}}" class="notice-item__desc">{{item.content}}</view>
+    <view wx:if="{{showAction}}" class="notice-item__more">查看详情</view>
+  </view>
+</view>

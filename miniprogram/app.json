@@ -1,55 +1,42 @@
 {
   "pages": [
-    "pages/home/index",
-    "pages/services/index",
-    "pages/process/index",
-    "pages/team/index",
-    "pages/contact/index",
-    "pages/assistant/index",
-    "pages/progress/index",
-    "pages/my/index"
+    "pages/index/index",
+    "pages/appointment/index",
+    "pages/cases/index",
+    "pages/cases/detail",
+    "pages/cases/progress/index",
+    "pages/cases/business/index",
+    "pages/appointment/records/index",
+    "pages/about/index"
   ],
   "tabBar": {
-    "color": "#6B7A90",
-    "selectedColor": "#0F4C81",
+    "custom": true,
+    "color": "#B57272",
+    "selectedColor": "#9C0B0B",
     "backgroundColor": "#FFFFFF",
     "list": [
       {
-        "pagePath": "pages/home/index",
-        "text": "首页",
-        "iconPath": "images/tab-home.png",
-        "selectedIconPath": "images/tab-home-active.png"
+        "pagePath": "pages/index/index",
+        "text": "首页"
       },
       {
-        "pagePath": "pages/services/index",
-        "text": "鉴定项目",
-        "iconPath": "images/tab-services.png",
-        "selectedIconPath": "images/tab-services-active.png"
+        "pagePath": "pages/appointment/index",
+        "text": "预约"
       },
       {
-        "pagePath": "pages/process/index",
-        "text": "流程",
-        "iconPath": "images/tab-process.png",
-        "selectedIconPath": "images/tab-process-active.png"
+        "pagePath": "pages/cases/index",
+        "text": "鉴定"
       },
       {
-        "pagePath": "pages/team/index",
-        "text": "资质",
-        "iconPath": "images/tab-team.png",
-        "selectedIconPath": "images/tab-team-active.png"
-      },
-      {
-        "pagePath": "pages/contact/index",
-        "text": "预约",
-        "iconPath": "images/tab-contact.png",
-        "selectedIconPath": "images/tab-contact-active.png"
+        "pagePath": "pages/about/index",
+        "text": "我的"
       }
     ]
   },
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#0F4C81",
-    "navigationBarTitleText": "山西正仁司法鉴定中心",
+    "navigationBarBackgroundColor": "#9C0B0B",
+    "navigationBarTitleText": "正仁司法鉴定中心",
     "navigationBarTextStyle": "white"
   },
   "style": "v2",

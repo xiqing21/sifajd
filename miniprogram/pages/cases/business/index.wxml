@@ -1,0 +1,31 @@
+<scroll-view class="business-scroll" scroll-y enable-flex>
+  <view class="business-header">
+    <view class="business-back" bindtap="handleBack">返回</view>
+    <text class="business-title">鉴定范围</text>
+  </view>
+
+  <view class="business-body">
+    <view class="card business-card">
+      <view class="menu-panel">
+        <view
+          wx:for="{{businessMenu}}"
+          wx:key="item"
+          class="menu-item {{activeIndex === index ? 'menu-item--active' : ''}}"
+          data-index="{{index}}"
+          bindtap="handleMenuTap"
+        >
+          {{item}}
+        </view>
+      </view>
+      <view class="detail-panel">
+        <view class="detail-head">{{businessMenu[activeIndex]}}</view>
+        <view class="detail-list">
+          <view class="detail-item" wx:for="{{items}}" wx:key="code">
+            <text class="detail-code">{{item.code}}</text>
+            <text class="detail-name">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

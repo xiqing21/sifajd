@@ -4,6 +4,7 @@ cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
 
 const db = cloud.database();
 const appointments = db.collection('appointments');
+const _ = db.command;
 
 const STATUS_FLOW = ['待确认', '资料审核', '检材处理', '实验检验', '鉴定完成', '出具意见'];
 
@@ -83,7 +84,12 @@ exports.main = async (event, context) => {
     if (phone) {
       query = query.where({ phone });
     } else if (wxContext.OPENID) {
-      query = query.where({ openid: wxContext.OPENID });
+      query = query.where(
+        _.or([
+          { openid: wxContext.OPENID },
+          { openId: wxContext.OPENID }
+        ])
+      );
     }
 
     const res = await query.orderBy('createdAt', 'desc').limit(limit).get();

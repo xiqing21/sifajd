@@ -1,0 +1,56 @@
+<scroll-view class="records-scroll" scroll-y enable-flex refresher-enabled="true" refresher-triggered="{{loading}}" bindrefresherrefresh="handleRefresh">
+  <view class="records-header">
+    <text class="records-title">我的预约</text>
+    <text class="records-subtitle">查看预约记录与处理进度</text>
+  </view>
+
+  <view class="records-body">
+    <view wx:if="{{!loading && !records.length}}" class="empty-state">
+      <view class="empty-icon">📄</view>
+      <text class="empty-text">暂无预约记录，先去预约吧～</text>
+      <button class="empty-button" bindtap="goAppointment">立即预约</button>
+    </view>
+
+    <view wx:for="{{records}}" wx:for-item="record" wx:key="id" class="record-card">
+      <view class="record-card__head">
+        <view class="record-status">{{record.status}}</view>
+        <text class="record-time">{{record.createdAt}}</text>
+      </view>
+      <view class="record-info">
+        <view class="record-row">
+          <text class="label">姓名</text>
+          <text class="value">{{record.name}}</text>
+        </view>
+        <view class="record-row">
+          <text class="label">联系方式</text>
+          <text class="value">{{record.phone}}</text>
+        </view>
+        <view class="record-row">
+          <text class="label">鉴定类型</text>
+          <text class="value">{{record.caseType}}</text>
+        </view>
+        <view class="record-row">
+          <text class="label">预约时间</text>
+          <text class="value">{{record.appointmentDate}} {{record.appointmentTime}}</text>
+        </view>
+        <view wx:if="{{record.remarks}}" class="record-row">
+          <text class="label">备注</text>
+          <text class="value">{{record.remarks}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{record.timeline && record.timeline.length}}" class="record-timeline">
+        <view wx:for="{{record.timeline}}" wx:for-item="node" wx:key="title" class="timeline-item">
+          <view class="timeline-dot {{node.finished ? 'timeline-dot--done' : ''}}"></view>
+          <view class="timeline-content">
+            <text class="timeline-title">{{node.title}}</text>
+            <text class="timeline-desc">{{node.desc}}</text>
+            <text wx:if="{{node.timestamp}}" class="timeline-time">{{node.timestamp}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="scroll-space"></view>
+</scroll-view>

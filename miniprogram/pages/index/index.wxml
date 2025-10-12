@@ -1,82 +1,100 @@
-<view class="container">
-  <view class="card hero-card">
-    <text class="hero-title">山西正仁司法鉴定中心</text>
-    <text class="hero-slogan">科学 · 公正 · 高效 · 保密</text>
-    <view class="hero-tags">
-      <view class="tag" wx:for="{{coreValues}}" wx:key="value">{{item}}</view>
-    </view>
-    <text class="hero-desc">经山西省司法厅核准注册的综合性司法鉴定机构，为公检法机关、行政单位及社会公众提供权威、规范的司法鉴定服务。</text>
+<scroll-view class="index-scroll" scroll-y enable-flex>
+  <view class="hero-wrapper">
+    <text class="hero-title">正仁司法鉴定中心</text>
   </view>
 
-  <view class="card stats-card">
-    <view class="stat" wx:for="{{stats}}" wx:key="title">
-      <text class="stat-title">{{item.title}}</text>
-      <text class="stat-value">{{item.value}}</text>
-    </view>
-  </view>
-
-  <view class="card section">
-    <text class="section-title">核心业务范围</text>
-    <view class="service-group" wx:for="{{services}}" wx:key="title">
-      <text class="group-title">{{item.title}}</text>
-      <view class="group-items">
-        <view class="group-item" wx:for="{{item.items}}" wx:key="index">{{item}}</view>
+  <view class="index-body">
+    <view class="search-card">
+      <view class="search-bar">
+        <text class="search-icon">🔍</text>
+        <input
+          class="search-input"
+          value="{{searchKeyword}}"
+          placeholder="搜索业务关键词，如“亲缘鉴定”"
+          confirm-type="search"
+          bindinput="handleSearchInput"
+          bindconfirm="handleSearchConfirm"
+        />
+        <view wx:if="{{searchKeyword}}" class="search-clear" bindtap="handleClearSearch">✕</view>
       </view>
+      <text class="search-tip">输入业务关键词快速定位所需鉴定项目</text>
     </view>
-  </view>
 
-  <view class="card section">
-    <text class="section-title">委托鉴定流程</text>
-    <view class="process-step" wx:for="{{processSteps}}" wx:key="index">
-      <view class="step-index">0{{index + 1}}</view>
-      <view class="step-content">
-        <text class="step-title">{{item.title}}</text>
-        <text class="step-desc">{{item.desc}}</text>
+    <view class="card marquee-card" bindtap="handleNoticeTap">
+      <view class="card-head">
+        <text class="card-title">鉴定公告</text>
+        <text class="card-subtitle">最新通知文字流动展示</text>
       </view>
-    </view>
-  </view>
-
-  <view class="card section">
-    <text class="section-title">中心优势</text>
-    <view class="advantage" wx:for="{{advantages}}" wx:key="index">
-      <text class="advantage-index">0{{index + 1}}</text>
-      <text class="advantage-text">{{item}}</text>
-    </view>
-  </view>
-
-  <view class="card section">
-    <text class="section-title">联系方式</text>
-    <view class="contact-row">
-      <text class="contact-label">咨询电话</text>
-      <view class="phones">
-        <view
-          class="action-chip action-primary"
-          wx:for="{{contact.phones}}"
-          wx:key="{{item}}"
-          data-phone="{{item}}"
-          bindtap="handleCall"
+      <view class="marquee-container">
+        <swiper
+          class="marquee-swiper"
+          vertical
+          autoplay
+          circular
+          interval="3200"
+          duration="600"
+          easing-function="easeInOutCubic"
+          bindchange="handleNoticeChange"
         >
-          {{item}}
+          <swiper-item wx:for="{{notices}}" wx:key="id">
+            <view class="marquee-item">
+              <text class="marquee-date">{{item.publishDate}}</text>
+              <text class="marquee-content">{{item.title}}</text>
+            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+    </view>
+
+    <view class="card highlight-card">
+      <view class="card-head">
+        <text class="card-title">选择我们的理由</text>
+      </view>
+      <view class="highlight-list">
+        <view class="highlight-item" wx:for="{{highlights}}" wx:key="item">
+          <text class="highlight-index">0{{index + 1}}</text>
+          <text class="highlight-text">{{item}}</text>
         </view>
       </view>
     </view>
-    <view class="contact-row">
-      <text class="contact-label">办公地址</text>
-      <text class="contact-value">{{contact.address}}</text>
-      <view class="action-chip action-secondary" bindtap="handleCopyAddress">复制地址</view>
-    </view>
-    <view class="contact-row">
-      <text class="contact-label">办公时间</text>
-      <text class="contact-value">{{contact.hours}}</text>
-    </view>
-    <view class="contact-row">
-      <text class="contact-label">官网</text>
-      <text class="contact-value">{{contact.website}}</text>
-      <view class="action-chip action-secondary" bindtap="handleCopyWebsite">复制链接</view>
-    </view>
-  </view>
 
-  <view class="footer">
-    <cloudbase-badge show-text="{{true}}" />
+    <view class="card service-card">
+      <view class="card-head">
+        <text class="card-title">业务速览</text>
+        <text class="card-subtitle">覆盖鉴定全链条 · 多学科协同</text>
+      </view>
+      <view class="service-result">共 {{filteredServices.length}} 个匹配项目</view>
+      <view wx:if="{{filteredServices.length}}" class="service-list">
+        <view class="service-item" wx:for="{{filteredServices}}" wx:key="name">
+          <view class="service-item__info">
+            <text class="service-item__name">{{item.name}}</text>
+            <text class="service-item__desc">{{item.description}}</text>
+            <view class="service-item__keywords">
+              <view class="service-item__tag" wx:for="{{item.keywords}}" wx:key="keyword">{{item}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else class="service-empty">暂无匹配项目，请尝试其他关键词。</view>
+    </view>
+
+    <view class="card guide-card">
+      <view class="card-head">
+        <text class="card-title">鉴定流程</text>
+        <text class="card-subtitle">专人陪同 · 透明可追溯</text>
+      </view>
+      <view class="guide-steps">
+        <view class="guide-step" wx:for="{{guideSteps}}" wx:key="title">
+          <view class="guide-step__badge">{{index + 1}}</view>
+          <view class="guide-step__content">
+            <text class="guide-step__title">{{item.title}}</text>
+            <text class="guide-step__desc">{{item.desc}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="page-footer">山西省司法厅核准 · 司法鉴定许可证证号：140118167</view>
+    <view class="scroll-space"></view>
   </view>
-</view>
+</scroll-view>

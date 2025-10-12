@@ -1,0 +1,105 @@
+<scroll-view class="mine-scroll" scroll-y enable-flex>
+  <header-bar
+    subtitle="Welcome"
+    title="我的正仁"
+    description="个性化服务 · 案件随时掌握"
+  />
+
+  <view class="mine-body">
+    <view class="profile-card">
+      <view class="profile-avatar">{{userName.substring(0,1)}}</view>
+      <view class="profile-info">
+        <text class="profile-name">{{userName}}</text>
+        <text class="profile-meta">{{membershipLevel}} · {{userPhone}}</text>
+      </view>
+      <view class="profile-tag">身份已认证</view>
+    </view>
+
+    <view class="card shortcut-card">
+      <text class="section-title">常用服务</text>
+      <view class="shortcut-grid">
+        <view
+          class="shortcut-item"
+          wx:for="{{shortcutCards}}"
+          wx:key="key"
+          data-key="{{item.key}}"
+          bindtap="handleShortcutTap"
+        >
+          <text class="shortcut-title">{{item.title}}</text>
+          <text class="shortcut-desc">{{item.desc}}</text>
+          <text class="shortcut-link">立即前往</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="card case-card">
+      <view class="card-head">
+        <text class="card-title">最新鉴定</text>
+        <text class="card-subtitle">实时同步进度</text>
+      </view>
+      <view class="case-summary">
+        <view class="case-row">
+          <text class="case-label">鉴定编号</text>
+          <text class="case-value">{{latestCase.id}}</text>
+        </view>
+        <view class="case-row">
+          <text class="case-label">业务类型</text>
+          <text class="case-value">{{latestCase.type}}</text>
+        </view>
+        <view class="case-row">
+          <text class="case-label">受理日期</text>
+          <text class="case-value">{{latestCase.submitDate}}</text>
+        </view>
+        <view class="case-row">
+          <text class="case-label">当前状态</text>
+          <text class="case-status">{{latestCase.status}}</text>
+        </view>
+        <view class="case-progress">{{latestCase.progress}}</view>
+        <view class="case-actions">
+          <button class="primary-btn" data-key="cases" bindtap="handleShortcutTap">查看进度</button>
+          <button class="ghost-btn" data-key="reports" bindtap="handleShortcutTap">历史意见书</button>
+        </view>
+        <view class="manual-update" bindtap="handleManualUpdate">案管专员手动更新</view>
+      </view>
+    </view>
+
+    <view class="card notice-card">
+      <view class="notice-tabs">
+        <view
+          class="notice-tab {{activeNoticeTab === index ? 'notice-tab--active' : ''}}"
+          wx:for="{{noticeTabs}}"
+          wx:key="title"
+          data-index="{{index}}"
+          bindtap="switchNoticeTab"
+        >
+          {{item}}
+        </view>
+      </view>
+      <view wx:if="{{activeNoticeTab === 0}}" class="notice-list">
+        <view class="notice-item" wx:for="{{announcements}}" wx:key="id">
+          <text class="notice-time">{{item.time}}</text>
+          <text class="notice-text">{{item.title}}</text>
+        </view>
+      </view>
+      <view wx:else class="notice-list">
+        <view class="notice-item" wx:for="{{systemMessages}}" wx:key="id">
+          <text class="notice-time">{{item.time}}</text>
+          <text class="notice-text">{{item.title}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="card setting-card">
+      <text class="section-title">服务设置</text>
+      <view class="setting-list">
+        <view class="setting-item" wx:for="{{settings}}" wx:key="label">
+          <text class="setting-label">{{item.label}}</text>
+          <switch checked="{{item.value}}" data-index="{{index}}" bindchange="toggleSetting" color="#9C0B0B" />
+        </view>
+      </view>
+    </view>
+
+    <text class="logout">退出登录</text>
+    <view class="scroll-space"></view>
+  </view>
+</scroll-view>

@@ -1,0 +1,109 @@
+<scroll-view class="appointment-scroll" scroll-y>
+  <header-bar
+    subtitle="预约鉴定"
+    title="在线预约"
+    description="提交您的鉴定需求，专员将在 30 分钟内与您确认信息"
+  />
+
+  <view class="appointment-body">
+    <view class="card form-card">
+      <view class="form-item">
+        <text class="form-label">申请人姓名</text>
+        <input
+          class="form-input"
+          placeholder="请输入姓名"
+          value="{{form.name}}"
+          data-field="name"
+          bindinput="handleInput"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">联系方式</text>
+        <input
+          class="form-input"
+          type="number"
+          placeholder="请输入 11 位手机号"
+          value="{{form.phone}}"
+          data-field="phone"
+          bindinput="handleInput"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">身份证号</text>
+        <input
+          class="form-input"
+          placeholder="请填写申请人身份证号"
+          value="{{form.idNo}}"
+          data-field="idNo"
+          bindinput="handleInput"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">鉴定类型</text>
+        <picker
+          class="form-picker"
+          range="{{caseTypes}}"
+          value="{{form.caseTypeIndex}}"
+          data-field="caseTypeIndex"
+          bindchange="handlePickerChange"
+        >
+          <view class="form-picker__value">{{caseTypes[form.caseTypeIndex]}}</view>
+        </picker>
+      </view>
+
+      <view class="form-row">
+        <view class="form-item">
+          <text class="form-label">预约日期</text>
+          <picker mode="date" value="{{form.appointmentDate}}" bindchange="handleDateChange">
+            <view class="form-picker__value">{{form.appointmentDate || '选择日期'}}</view>
+          </picker>
+        </view>
+        <view class="form-item">
+          <text class="form-label">预约时间</text>
+          <picker
+            mode="time"
+            value="{{form.appointmentTime}}"
+            start="09:00"
+            end="17:30"
+            bindchange="handleTimeChange"
+          >
+            <view class="form-picker__value">{{form.appointmentTime || '选择时间'}}</view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="form-item">
+        <text class="form-label">补充说明</text>
+        <textarea
+          class="form-textarea"
+          placeholder="请描述案件背景、所需材料或特殊需求"
+          value="{{form.remarks}}"
+          data-field="remarks"
+          bindinput="handleInput"
+          maxlength="300"
+        />
+      </view>
+
+      <view class="submit-btn {{submitting ? 'submit-btn--disabled' : ''}}" bindtap="handleSubmit">
+        {{submitting ? '提交中...' : '提交预约'}}
+      </view>
+    </view>
+
+    <view class="card tips-card">
+      <view class="tips-title">预约提示</view>
+      <view class="tips-list">
+        <view class="tips-item">请保证填写信息真实有效，工作人员将电话确认。</view>
+        <view class="tips-item">如需加急出具意见书，请在备注中说明紧急原因。</view>
+        <view class="tips-item">可携带身份证明、委托书、病历等资料原件到现场复审。</view>
+      </view>
+      <view class="tips-contact">
+        <text>电话咨询：</text>
+        <text class="tips-phone" data-phone="155-2502-4666" bindtap="handleCall">155-2502-4666</text>
+      </view>
+    </view>
+    <view class="scroll-space"></view>
+  </view>
+</scroll-view>

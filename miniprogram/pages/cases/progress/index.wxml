@@ -1,0 +1,76 @@
+<scroll-view class="progress-scroll" scroll-y enable-flex>
+  <view class="progress-header">
+    <view class="progress-back" bindtap="handleBack">返回</view>
+    <text class="progress-title">进度查询</text>
+  </view>
+
+  <view class="progress-body">
+    <view class="card search-card">
+      <view class="search-field">
+        <input
+          class="search-input"
+          placeholder="请输入案件编号 / 身份证号"
+          value="{{keyword}}"
+          bindinput="handleKeywordInput"
+          confirm-type="search"
+          bindconfirm="handleSearch"
+        />
+        <view wx:if="{{keyword}}" class="search-clear" bindtap="clearKeyword">×</view>
+      </view>
+      <view class="search-button" bindtap="handleSearch">查询</view>
+    </view>
+
+    <view class="card type-card">
+      <view class="type-tabs">
+        <view
+          wx:for="{{caseTypes}}"
+          wx:key="type"
+          class="type-tab {{activeTypeIndex === index ? 'type-tab--active' : ''}}"
+          data-index="{{index}}"
+          bindtap="handleTypeChange"
+        >
+          {{item}}
+        </view>
+      </view>
+    </view>
+
+    <view class="cases-list">
+      <view
+        wx:for="{{cases}}"
+        wx:key="caseId"
+        class="card case-card"
+        data-case-id="{{item.caseId}}"
+        bindtap="handleCaseTap"
+      >
+        <view class="case-card__header">
+          <text class="case-card__id">{{item.caseId}}</text>
+          <text class="case-card__status case-card__status--{{item.status}}">{{item.statusLabel}}</text>
+        </view>
+        <view class="case-card__meta">
+          <view class="case-card__row">
+            <text class="case-card__label">类型</text>
+            <text class="case-card__value">{{item.type}}</text>
+          </view>
+          <view class="case-card__row">
+            <text class="case-card__label">申请人</text>
+            <text class="case-card__value">{{item.applicant}}</text>
+          </view>
+          <view class="case-card__row">
+            <text class="case-card__label">证件号</text>
+            <text class="case-card__value">{{item.idNo}}</text>
+          </view>
+          <view class="case-card__row">
+            <text class="case-card__label">更新时间</text>
+            <text class="case-card__value">{{item.updatedAt}}</text>
+          </view>
+        </view>
+        <view class="case-card__summary">{{item.summary}}</view>
+      </view>
+
+      <view wx:if="{{!cases.length && !loading}}" class="empty-state">暂无相关案件，请核对后再试</view>
+      <view wx:if="{{loading}}" class="loading">查询中...</view>
+    </view>
+
+    <view class="scroll-space"></view>
+  </view>
+</scroll-view>

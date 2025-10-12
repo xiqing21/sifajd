@@ -1,0 +1,6 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "header-bar": "/components/header-bar/index"
+  }
+}

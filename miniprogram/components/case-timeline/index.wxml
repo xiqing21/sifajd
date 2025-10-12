@@ -1,0 +1,11 @@
+<view class="timeline">
+  <view wx:for="{{steps}}" wx:key="time" class="timeline__item">
+    <view class="timeline__dot {{item.finished ? 'timeline__dot--done' : ''}}"></view>
+    <view class="timeline__line {{index === steps.length - 1 ? 'timeline__line--end' : ''}}"></view>
+    <view class="timeline__content">
+      <view class="timeline__title">{{item.title}}</view>
+      <view wx:if="{{item.desc}}" class="timeline__desc">{{item.desc}}</view>
+      <view class="timeline__time">{{item.time}}</view>
+    </view>
+  </view>
+</view>

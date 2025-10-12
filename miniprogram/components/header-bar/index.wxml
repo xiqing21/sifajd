@@ -1,0 +1,12 @@
+<view class="header">
+  <view class="header__gradient"></view>
+  <view class="header__content">
+    <view class="header__titles">
+      <text class="header__subtitle">{{subtitle}}</text>
+      <text class="header__title">{{title}}</text>
+      <text wx:if="{{description}}" class="header__description">{{description}}</text>
+    </view>
+    <view wx:if="{{showBadge}}" class="header__badge">司法鉴定 · 专业机构</view>
+    <slot></slot>
+  </view>
+</view>

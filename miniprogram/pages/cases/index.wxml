@@ -1,0 +1,37 @@
+<scroll-view class="assessment-scroll" scroll-y enable-flex>
+  <view class="assessment-banner">
+    <text class="banner-title">鉴定相关</text>
+    <text class="banner-desc">查进度 · 看范围 · 一站式服务</text>
+  </view>
+
+  <view class="assessment-body">
+    <view class="action-grid">
+      <view
+        wx:for="{{cards}}"
+        wx:key="key"
+        class="action-card {{item.highlight ? 'action-card--highlight' : ''}}"
+        data-key="{{item.key}}"
+        bindtap="handleCardSwitch"
+      >
+        <view class="action-card__content">
+          <text class="action-card__title">{{item.title}}</text>
+          <text class="action-card__desc">{{item.desc}}</text>
+        </view>
+        <view class="action-card__icon">›</view>
+      </view>
+    </view>
+
+    <view class="scope-preview">
+      <text class="scope-preview__label">热门鉴定项目</text>
+      <view class="scope-tags">
+        <view class="scope-tag">法医物证鉴定</view>
+        <view class="scope-tag">法医病理鉴定</view>
+        <view class="scope-tag">文书鉴定</view>
+        <view class="scope-tag">电子数据鉴定</view>
+      </view>
+      <text class="scope-preview__hint">点击“鉴定范围”查看完整业务分类及子项目</text>
+    </view>
+
+    <view class="scroll-space"></view>
+  </view>
+</scroll-view>
